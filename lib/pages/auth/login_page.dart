@@ -62,7 +62,9 @@ class LoginPage extends StatelessWidget {
                 MyButton(
                   icon: Icons.person_pin,
                   Btnname: 'Login',
-                  ontap: () {},
+                  ontap: () {
+                    loginController.onLogin();
+                  },
                 ),
                 const SizedBox(height: 20),
                 MyButton(
