@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:learn_firebase_flutter/controllers/auth_controller/signup_controller.dart';
 import 'package:learn_firebase_flutter/pages/auth/widgets/my_button.dart';
 import 'package:learn_firebase_flutter/pages/auth/widgets/my_text_field.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+import '../../controllers/auth_controller/login_controller.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SignupController signupCotroller = Get.put(SignupController());
+    LoginController loginController = Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text('S I G N U P'),
+        title: const Text('L O G I N'),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -25,7 +26,7 @@ class SignupPage extends StatelessWidget {
                 const Row(
                   children: [
                     Text(
-                      'Welcome',
+                      'Welcome Back!',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -36,7 +37,7 @@ class SignupPage extends StatelessWidget {
                 const Row(
                   children: [
                     Text(
-                      'SIGN UP',
+                      'LOGIN',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 45,
@@ -47,42 +48,28 @@ class SignupPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 MyTextField(
-                  icons: Icons.person,
-                  label: 'Enter your name',
-                  Onchange: signupCotroller.name,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
                   icons: Icons.email,
                   label: 'Enter your email',
-                  Onchange: signupCotroller.email,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  icons: Icons.phone,
-                  label: 'Enter your phone number',
-                  Onchange: signupCotroller.number,
+                  Onchange: loginController.email,
                 ),
                 const SizedBox(height: 10),
                 MyTextField(
                   icons: Icons.password,
                   label: 'Enter your password',
-                  Onchange: signupCotroller.password,
+                  Onchange: loginController.password,
                 ),
                 const SizedBox(height: 50),
+                MyButton(
+                  icon: Icons.person_pin,
+                  Btnname: 'Login',
+                  ontap: () {},
+                ),
+                const SizedBox(height: 20),
                 MyButton(
                   icon: Icons.person_add,
                   Btnname: 'Sign Up',
                   ontap: () {
-                    signupCotroller.onSignup();
-                  },
-                ),
-                const SizedBox(height: 20),
-                MyButton(
-                  icon: Icons.person_pin,
-                  Btnname: 'Login',
-                  ontap: () {
-                    Get.toNamed('/login');
+                    Get.toNamed('signup');
                   },
                 ),
               ],
